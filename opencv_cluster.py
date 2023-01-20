@@ -16,8 +16,8 @@ while(True):
     RGB_frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
 
     # Draw a rectangle and apply Image ROI
+    focus = frame[300:800, 650:1250]
     rect = cv.rectangle(frame,(650,300),(1250,800),(0,255,0),3)
-    focus = frame[650:1250, 300:800]
 
     # 3D to 2D
     focus = focus.reshape((focus.shape[0] * focus.shape[1],3))
