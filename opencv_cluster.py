@@ -1,3 +1,11 @@
+'''
+source:
+- https://code.likeagirl.io/finding-dominant-colour-on-an-image-b4e075f98097
+- https://docs.opencv.org/4.x/dc/da5/tutorial_py_drawing_functions.html
+- https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+- https://docs.opencv.org/3.4/d3/df2/tutorial_py_basic_ops.html
+
+'''
 import numpy as np
 import cv2 as cv
 import matplotlib.pyplot as plt
