@@ -1,3 +1,13 @@
+'''
+source:
+OpenCV documentation:
+- https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_gui/py_video_display/py_video_display.html
+- https://docs.opencv.org/4.x/df/d9d/tutorial_py_colorspaces.html
+- https://docs.opencv.org/4.x/df/d9d/tutorial_py_colorspaces.html
+- https://docs.opencv.org/4.x/d4/d73/tutorial_py_contours_begin.html
+
+'''
+
 import numpy as np
 import cv2 as cv
 
