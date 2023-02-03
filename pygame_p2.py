@@ -2,14 +2,14 @@ import paho.mqtt.client as mqtt
 import pygame
 import button
 
-from pygame.locals import(
-    K_r,
-    K_p,
-    K_s,
-    K_ESCAPE,
-    KEYDOWN,
-    QUIT,
-)
+# from pygame.locals import(
+#     K_r,
+#     K_p,
+#     K_s,
+#     K_ESCAPE,
+#     KEYDOWN,
+#     QUIT,
+# )
 
 pygame.init()
 
