@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 import random
 from getpass import getpass
+import time
 
 player1 = ""
 player2 = ""
@@ -45,54 +46,41 @@ def on_message(central, userdata, message):
     if player1 != "" and player2 != "":
         result = rps_game(player1, player2)
         print(result)
-        central.publish("RESULT", result)
+        central.publish("RESULT", result + " p1: " + player1 + ", p2: " + player2 + " | Score: p1: " + str(player1_score) + " vs p2: " + str(player2_score))
+        player1 = ""
+        player2 = ""
 
 def rps_prompt():
     print("Sending the prompt...")
-    central.publish("PROMPT", "\nWelcome to Rock-Paper-Scissors Game!\n Press:\n r for Rock\n p for Paper\n s for scissors\n")
+    central.publish("PROMPT", "Choose Rock Paper or Scissors!")
 
 def rps_game(player_1, player_2):
-    # player1 = getpass("")
-
-    # if player1 == "r":
-    #     player1 = "Rock"
-    # elif player1 == "p":
-    #     player1 = "Paper"
-    # elif player1 == "s":
-    #     player1 = "Scissors"
-    # else:
-    #     print("invalid input\n")
-
-    # print("Player1 chose: " + player1)
-
-    # player2 = random.choice(["Rock", "Paper", "Scissors"])
-    # print("Player2 chose: " + player2 + "\n")
+    
     global result
     global player1_score
     global player2_score
     if player1 == player2:
-        result = "Draws!\n"
+        result = "Draws!"
     elif player1 == "Rock" and player2 == "Paper":
         player2_score += 1
-        result = "Player2 wins!\n"
+        result = "Player2 wins!"
     elif player1 == "Rock" and player2 == "Scissors":
         player1_score += 1
-        result = "Player1 wins!\n"
+        result = "Player1 wins!"
     elif player1 == "Paper" and player2 == "Rock":
         player1_score += 1
-        result = "Player1 wins!\n"
+        result = "Player1 wins!"
     elif player1 == "Paper" and player2 == "Scissors":
         player2_score += 1
-        result = "Player2 wins!\n"
+        result = "Player2 wins!"
     elif player1 == "Scissors" and player2 == "Rock":
         player2_score += 1
-        result = "Player2 wins!\n"
+        result = "Player2 wins!"
     else:
         player1_score += 1
-        result = "Player1 wins!\n"
+        result = "Player1 wins!"
 
     return result
-    # print("player1: " + str(player1_score) + "\nplayer2: " + str(player2_score) + "\n")
 
 central = mqtt.Client()
 
@@ -106,11 +94,6 @@ central.loop_start()
 
 while True:
     pass
-    # answer = input("play again? y/n")
-    # if answer == "n" or "N":
-    #     break
-    # else:
-    #     central.rps_prompt()
 
 central.loop_stop()
 central.disconnect()
