@@ -2,14 +2,14 @@ import paho.mqtt.client as mqtt
 import pygame
 import button
 
-from pygame.locals import(
-    K_r,
-    K_p,
-    K_s,
-    K_ESCAPE,
-    KEYDOWN,
-    QUIT,
-)
+# from pygame.locals import(
+#     K_r,
+#     K_p,
+#     K_s,
+#     K_ESCAPE,
+#     KEYDOWN,
+#     QUIT,
+# )
 
 pygame.init()
 
@@ -51,15 +51,10 @@ def on_disconnect(player1, userdata, rc):
 def on_message(player1, userdata, message):
     global message_topic
     message_topic = message.topic
-    # if message_topic == "PROMPT":
-    #     if rock_button.draw(screen):
-    #         print("Rock")
-    #         message = "r"
-    #         player1.publish("PLAYER1", message, qos=1)
+
     if message_topic == "RESULT":
         global result
         result = str(message.payload.decode("utf-8"))
-        # print("Here's the result: " + message.payload.decode("utf-8"))
 
 def prompt(x, y):
     global prompt_intro
